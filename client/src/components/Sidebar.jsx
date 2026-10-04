@@ -1,0 +1,5 @@
+import { ClipboardCheck, FilePlus2, History, LayoutDashboard, PackageSearch, Upload } from "lucide-react";
+const items = [[LayoutDashboard, "Dashboard"], [FilePlus2, "New listing"], [PackageSearch, "Review queue"], [History, "History"], [Upload, "Batch import"]];
+export default function Sidebar({ page, setPage }) {
+  return <aside className="sidebar-shell"><button type="button" className="sidebar-brand" onClick={() => setPage("Landing")} aria-label="Return to Marketplace Ops landing page"><span className="brand-mark"><ClipboardCheck size={20} /></span><span><span className="brand-name">MARKETPLACE OPS</span><span className="sidebar-brand-subtitle">Listing quality reviewer</span></span></button><nav className="sidebar-nav" aria-label="Primary navigation"><p className="sidebar-label">Workspace</p>{items.map(([Icon, name]) => <button type="button" key={name} onClick={() => setPage(name)} aria-current={page === name ? "page" : undefined} className={`sidebar-link ${page === name ? "is-active" : ""}`}><span className="sidebar-icon"><Icon size={17} /></span><span>{name}</span></button>)}</nav></aside>;
+}

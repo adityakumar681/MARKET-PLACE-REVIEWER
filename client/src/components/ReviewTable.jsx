@@ -1,0 +1,3 @@
+export default function ReviewTable({ reviews, openReview }) {
+  return <div className="table-wrap"><table><thead><tr><th>Listing</th><th>Findings</th><th>Review date</th><th /></tr></thead><tbody>{reviews.map((review) => <tr key={review._id}><td><strong>{review.listing?.title || "Listing removed"}</strong><br /><span className="text-xs text-slate-500">{review.listing?.seller}</span></td><td>{review.findings.length} issue{review.findings.length === 1 ? "" : "s"}</td><td>{new Date(review.createdAt).toLocaleString()}</td><td className="text-right"><button className="text-button" onClick={() => openReview(review)}>Open</button></td></tr>)}{!reviews.length && <tr><td colSpan="4" className="empty">No completed reviews yet.</td></tr>}</tbody></table></div>;
+}
